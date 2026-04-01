@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Impulsee360 – Finanzas y Desarrollo Personal</title>
+<meta name="description" content="Guías digitales prácticas para emprendedores de LATAM: impuestos, disciplina y finanzas personales. Descarga inmediata." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-50: #EAF3DE;
+    --green-100: #C0DD97;
+    --green-600: #3B6D11;
+    --green-700: #27500A;
+    --purple-50: #EEEDFE;
+    --purple-100: #CECBF6;
+    --purple-600: #534AB7;
+    --amber-50: #FAEEDA;
+    --amber-100: #FAC775;
+    --amber-600: #854F0B;
+    --gray-50: #F7F6F2;
+    --gray-100: #EEECE6;
+    --gray-200: #D3D1C7;
+    --gray-700: #444441;
+    --text: #1a1a18;
+    --text-muted: #5a5a56;
+    --text-faint: #8a8a84;
+    --border: rgba(0,0,0,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAFAF7;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,247,0.93);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--green-600); }
+  .nav-cta {
+    background: var(--green-600); color: #fff; font-size: 13px; font-weight: 500;
+    padding: 8px 18px; border-radius: 999px; text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-700); }
+
+  .hero { max-width: 680px; margin: 0 auto; padding: 5rem 2rem 4rem; text-align: center; animation: fadeUp 0.55s ease both; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-50); color: var(--green-600);
+    font-size: 12px; font-weight: 500; padding: 5px 14px;
+    border-radius: 999px; margin-bottom: 1.5rem; border: 1px solid var(--green-100);
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 6vw, 50px); line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--green-600); }
+  .hero p { font-size: 17px; color: var(--text-muted); max-width: 480px; margin: 0 auto 2.5rem; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--green-600); color: #fff; font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 12px; text-decoration: none;
+    transition: background 0.2s, transform 0.15s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--green-700); transform: translateY(-1px); }
+  .btn-secondary {
+    background: #fff; color: var(--text); font-size: 15px; font-weight: 500;
+    padding: 14px 28px; border-radius: 12px; text-decoration: none;
+    border: 1px solid var(--gray-200); transition: border-color 0.2s, transform 0.15s; display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gray-700); transform: translateY(-1px); }
+
+  .trust-bar {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    background: var(--gray-50); padding: 1rem 2rem;
+    display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+  .trust-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
+  .section { padding: 4rem 0; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-600); margin-bottom: 0.5rem; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 4vw, 36px); line-height: 1.2; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.75rem; }
+  .section-sub { font-size: 16px; color: var(--text-muted); max-width: 520px; margin-bottom: 2.5rem; }
+  .divider { height: 1px; background: var(--border); }
+
+  .products { display: flex; flex-direction: column; gap: 24px; }
+
+  .product-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 18px; overflow: hidden;
+    display: grid; grid-template-columns: 160px 1fr;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .product-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+
+  .product-cover { display: flex; align-items: center; justify-content: center; padding: 2rem 1rem; }
+  .product-cover.g { background: linear-gradient(145deg, #d4edba, var(--green-50)); }
+  .product-cover.p { background: linear-gradient(145deg, #dddaf8, var(--purple-50)); }
+  .product-cover.a { background: linear-gradient(145deg, #fcd99a, var(--amber-50)); }
+
+  .book-visual {
+    width: 68px; height: 90px; border-radius: 3px 8px 8px 3px;
+    position: relative; display: flex; align-items: center; justify-content: center;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.12);
+  }
+  .book-visual::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 7px;
+    border-radius: 3px 0 0 3px; opacity: 0.45;
+  }
+  .book-visual.g { background: #C0DD97; }
+  .book-visual.g::before { background: var(--green-600); }
+  .book-visual.p { background: var(--purple-100); }
+  .book-visual.p::before { background: var(--purple-600); }
+  .book-visual.a { background: var(--amber-100); }
+  .book-visual.a::before { background: var(--amber-600); }
+  .book-visual svg { width: 26px; height: 26px; }
+
+  .product-body { padding: 1.6rem 1.6rem 1.6rem 1.4rem; }
+
+  .product-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 999px; display: inline-block; margin-bottom: 10px; }
+  .product-tag.g { background: var(--green-50); color: var(--green-600); }
+  .product-tag.p { background: var(--purple-50); color: var(--purple-600); }
+  .product-tag.a { background: var(--amber-50); color: var(--amber-600); }
+
+  .product-body h3 { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1.25; letter-spacing: -0.01em; color: var(--text); margin-bottom: 6px; }
+  .product-tagline { font-size: 13px; color: var(--text-muted); font-style: italic; margin-bottom: 14px; line-height: 1.5; }
+
+  .includes { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 5px; }
+  .includes li { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .check {
+    width: 15px; height: 15px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .check.g { background: var(--green-50); }
+  .check.p { background: var(--purple-50); }
+  .check.a { background: var(--amber-50); }
+  .check svg { width: 8px; height: 8px; }
+
+  .bonus-strip {
+    background: var(--gray-50); border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 12px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .bonus-label { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 999px; white-space: nowrap; margin-top: 1px; }
+  .bonus-label.g { color: var(--green-600); background: var(--green-50); }
+  .bonus-label.p { color: var(--purple-600); background: var(--purple-50); }
+  .bonus-label.a { color: var(--amber-600); background: var(--amber-50); }
+  .bonus-strip p { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  .product-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .product-meta { font-size: 12px; color: var(--text-faint); display: flex; gap: 14px; flex-wrap: wrap; }
+  .product-meta span { display: flex; align-items: center; gap: 4px; }
+
+  .product-btn { background: var(--green-600); color: #fff; font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 10px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; flex-shrink: 0; }
+  .product-btn.p { background: var(--purple-600); }
+  .product-btn.a { background: var(--amber-600); }
+  .product-btn:hover { opacity: 0.85; }
+
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+  .why-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; }
+  .why-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .why-icon.g { background: var(--green-50); }
+  .why-icon.p { background: var(--purple-50); }
+  .why-icon.a { background: var(--amber-50); }
+  .why-icon.gr { background: var(--gray-100); }
+  .why-icon svg { width: 16px; height: 16px; }
+  .why-card h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+  .why-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  .final-cta-wrap { background: var(--green-600); border-radius: 20px; padding: 3.5rem 2rem; text-align: center; margin-bottom: 4rem; }
+  .final-cta-wrap h2 { font-family: 'DM Serif Display', serif; font-size: clamp(24px, 4vw, 36px); color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .final-cta-wrap p { font-size: 16px; color: rgba(255,255,255,0.82); margin: 0 auto 1.25rem; max-width: 420px; }
+  .final-cta-wrap blockquote { font-style: italic; font-size: 14px; color: rgba(255,255,255,0.6); margin: 0 auto 2rem; max-width: 380px; }
+  .btn-white { background: #fff; color: var(--green-600); font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 12px; text-decoration: none; display: inline-block; transition: opacity 0.2s, transform 0.15s; }
+  .btn-white:hover { opacity: 0.92; transform: translateY(-1px); }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; text-align: center; }
+  footer p { font-size: 12px; color: var(--text-faint); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .container { padding: 0 1.25rem; }
+    .trust-bar { gap: 1rem; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .section { padding: 3rem 0; }
+    .product-card { grid-template-columns: 1fr; }
+    .product-cover { padding: 1.5rem 1rem; min-height: 110px; }
+    .product-body { padding: 1.25rem; }
+    .product-footer { flex-direction: column; align-items: stretch; }
+    .product-btn { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Impulsee<span>360</span></a>
+  <!-- ✏️ REEMPLAZA con la URL de tu tienda en Payhip -->
+  <a href="https://payhip.com/impulsee360" class="nav-cta" target="_blank">Ver todos los recursos</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" fill="#3B6D11"/><path d="M3.5 6.5l1.5 1.5 3.5-3.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Recursos para emprendedores de LATAM
+  </div>
+  <h1>Claridad, sistema y <em>consistencia</em> para tu negocio digital</h1>
+  <p>Guías PDF prácticas para emprendedores que quieren organizarse, pagar lo justo en impuestos y construir disciplina real.</p>
+  <div class="hero-btns">
+    <!-- ✏️ REEMPLAZA con la URL de tu tienda en Payhip -->
+    <a href="https://payhip.com/impulsee360" class="btn-primary" target="_blank">Ver todos los recursos</a>
+    <a href="#productos" class="btn-secondary">Explorar guías</a>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg viewBox="0 0 14 14" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5L7 1z"/></svg>
+    Descarga inmediata
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 14 14" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="10" height="8" rx="1.5"/><path d="M5 3V2a2 2 0 0 1 4 0v1"/></svg>
+    Compra 100% segura
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 14 14" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"><path d="M2 7a5 5 0 1 0 10 0A5 5 0 0 0 2 7z"/><path d="M7 4.5V7l2 1.5"/></svg>
+    Aplícalo desde el día 1
+  </div>
+  <div class="trust-item">
+    <svg viewBox="0 0 14 14" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"><path d="M2 11l3-3 2.5 2.5L11 4"/></svg>
+    PDF · Sin suscripción
+  </div>
+</div>
+
+<div class="container">
+  <div class="section" id="productos">
+    <div class="section-label">Recursos disponibles</div>
+    <h2 class="section-title">Tres guías para transformar tu negocio</h2>
+    <p class="section-sub">Sin tecnicismos, sin relleno. Solo lo que necesitas saber y aplicar hoy.</p>
+
+    <div class="products">
+
+      <!-- PRODUCTO 1 -->
+      <div class="product-card">
+        <div class="product-cover g">
+          <div class="book-visual g">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+          <span class="product-tag g">Impuestos y finanzas</span>
+          <h3>Gana en digital, paga lo justo</h3>
+          <p class="product-tagline">La guía práctica de impuestos para emprendedores de LATAM que venden en internet.</p>
+          <ul class="includes">
+            <li><span class="check g"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cómo funcionan los impuestos digitales en LATAM, sin tecnicismos</li>
+            <li><span class="check g"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Qué gastos puedes descontar legalmente para pagar menos</li>
+            <li><span class="check g"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>El sistema de 15 minutos al mes para nunca más improvisar</li>
+            <li><span class="check g"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#3B6D11" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Los 6 errores que hacen que los emprendedores paguen de más</li>
+          </ul>
+          <div class="bonus-strip">
+            <span class="bonus-label g">3 bonus</span>
+            <p>Glosario del emprendedor digital · Plantilla de registro financiero mensual · Guía de plataformas de cobro (PayPal, Stripe, Wise, Payoneer)</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-meta">
+              <span>PDF · 35 páginas</span>
+              <span>Vista previa gratis disponible</span>
+            </div>
+            <!-- ✏️ REEMPLAZA con la URL de este producto en Payhip -->
+            <a href="https://payhip.com/b/2yhbP" class="product-btn" target="_blank">Ver en tienda →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 2 -->
+      <div class="product-card">
+        <div class="product-cover p">
+          <div class="book-visual p">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="1.6" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+          <span class="product-tag p">Disciplina y productividad</span>
+          <h3>Disciplina imparable</h3>
+          <p class="product-tagline">El método psicológico para eliminar la procrastinación de raíz y construir disciplina real — no motivación temporal.</p>
+          <ul class="includes">
+            <li><span class="check p"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#534AB7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>La verdad sobre la motivación y por qué no deberías depender de ella</li>
+            <li><span class="check p"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#534AB7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>El sistema de disciplina automática que no requiere fuerza de voluntad</li>
+            <li><span class="check p"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#534AB7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Método de enfoque profundo: trabaja menos tiempo y logra más</li>
+            <li><span class="check p"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#534AB7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Plan de acción de 30 días con tareas diarias concretas</li>
+          </ul>
+          <div class="bonus-strip">
+            <span class="bonus-label p">Bonus incluidos</span>
+            <p>Entrenamiento mental anti-procrastinación · Planillas de productividad listas para usar</p>
+          </div>
+          <div class="product-footer">
+            <div class="product-meta">
+              <span>PDF · Plan 30 días</span>
+              <span>Acceso inmediato</span>
+            </div>
+            <!-- ✏️ REEMPLAZA con la URL de este producto en Payhip -->
+            <a href="https://payhip.com/b/GsmH5" class="product-btn p" target="_blank">Ver en tienda →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCTO 3 -->
+      <div class="product-card">
+        <div class="product-cover a">
+          <div class="book-visual a">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#854F0B" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <div class="product-body">
+          <span class="product-tag a">Finanzas personales</span>
+          <h3>Finanzas personales: cómo ahorrar dinero</h3>
+          <p class="product-tagline">El sistema práctico para tomar el control de tu dinero, ahorrar consistentemente y construir estabilidad desde cero.</p>
+          <ul class="includes">
+            <li><span class="check a"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#854F0B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cómo crear un presupuesto que realmente funcione en tu día a día</li>
+            <li><span class="check a"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#854F0B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Estrategias de ahorro probadas aunque ganes poco</li>
+            <li><span class="check a"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#854F0B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cómo eliminar deudas y no volver a caer en ellas</li>
+            <li><span class="check a"><svg viewBox="0 0 8 8" fill="none"><path d="M1.5 4l1.5 1.5 3.5-3.5" stroke="#854F0B" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Paso a paso para tu fondo de emergencia desde el mes 1</li>
+          </ul>
+          <div class="product-footer">
+            <div class="product-meta">
+              <span>PDF · Descarga inmediata</span>
+              <span>Para principiantes</span>
+            </div>
+            <!-- ✏️ REEMPLAZA con la URL de este producto en Payhip -->
+            <a href="https://payhip.com/b/euE6P" class="product-btn a" target="_blank">Ver en tienda →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="container">
+  <div class="section">
+    <div class="section-label">Por qué Impulsee360</div>
+    <h2 class="section-title">Recursos hechos para emprendedores reales</h2>
+    <p class="section-sub">Sabemos que tu tiempo es limitado y necesitas información que puedas aplicar hoy, no en tres meses.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon g"><svg viewBox="0 0 16 16" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"><path d="M2 11l3-3 2.5 2.5L11 4M13 4h-3v3"/></svg></div>
+        <h3>Sin tecnicismos</h3>
+        <p>Todo explicado en lenguaje simple, como si te lo dijera un amigo que sí entiende del tema.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon p"><svg viewBox="0 0 16 16" fill="none" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M5 8h6M8 5v6"/></svg></div>
+        <h3>Hecho para LATAM</h3>
+        <p>Contexto real para Argentina, México, Colombia, Uruguay, Chile, Perú y más países de la región.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon a"><svg viewBox="0 0 16 16" fill="none" stroke="#854F0B" stroke-width="1.5" stroke-linecap="round"><path d="M3 13l4-4 2 2 5-7"/></svg></div>
+        <h3>Accionable desde hoy</h3>
+        <p>No teoría. Cada guía incluye pasos concretos, plantillas y ejercicios para aplicar de inmediato.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon gr"><svg viewBox="0 0 16 16" fill="none" stroke="#444441" stroke-width="1.5" stroke-linecap="round"><path d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2z"/><path d="M8 5v3l2 2"/></svg></div>
+        <h3>Descarga inmediata</h3>
+        <p>PDF listo para leer en tu celular, tablet o computadora. Sin esperas, sin complicaciones.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="container">
+  <div class="section" style="padding-bottom:0;">
+    <div class="final-cta-wrap">
+      <h2>Ganar en digital no es suerte</h2>
+      <p>Es claridad, sistema y consistencia. Empieza hoy con los recursos que te dan exactamente eso.</p>
+      <blockquote>"Ganar en digital no es suerte. Es claridad, sistema y consistencia." — Impulsee360</blockquote>
+      <!-- ✏️ REEMPLAZA con la URL de tu tienda en Payhip -->
+      <a href="https://payhip.com/impulsee360" class="btn-white" target="_blank">Ir a la tienda Impulsee360</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Impulsee360 · Recursos digitales para emprendedores de LATAM · Todos los derechos reservados</p>
+</footer>
+
+</body>
+</html>
